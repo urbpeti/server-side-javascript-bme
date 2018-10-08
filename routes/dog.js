@@ -3,7 +3,7 @@ const router = express.Router();
 
 const listDogs = require('../middleware/dog/listDogs');
 const getDog = require('../middleware/dog/getDog');
-const updatedDog = require('../middleware/dog/updatedDog');
+const updatedDog = require('../middleware/dog/updateDog');
 const insertDog = require('../middleware/dog/insertDog');
 const deleteDog = require('../middleware/dog/deleteDog');
 
