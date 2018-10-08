@@ -1,0 +1,20 @@
+{
+  "name": "kutyamenhely",
+  "version": "1.0.0",
+  "description": "menhelyi kutyak menedzselesere szolgalo alkalmazas",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "keywords": [
+    "dogs"
+  ],
+  "author": "Peter Urbanovics",
+  "license": "ISC",
+  "devDependencies": {
+    "nodemon": "^1.18.4"
+  },
+  "dependencies": {
+    "express": "^4.16.3"
+  }
+}
