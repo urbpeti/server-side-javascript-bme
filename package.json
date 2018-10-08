@@ -4,7 +4,8 @@
   "description": "menhelyi kutyak menedzselesere szolgalo alkalmazas",
   "main": "index.js",
   "scripts": {
-    "test": "jest"
+    "test": "jest",
+    "dev" : "./node_modules/nodemon/bin/nodemon.js index.js"
   },
   "keywords": [
     "dogs"
@@ -12,6 +13,7 @@
   "author": "Peter Urbanovics",
   "license": "ISC",
   "devDependencies": {
+    "eslint": "^5.6.1",
     "nodemon": "^1.18.4"
   },
   "dependencies": {

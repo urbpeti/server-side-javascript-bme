@@ -1,21 +1,24 @@
 const express = require('express');
 const app = express();
+const notfound = require('./middleware/errorhandling/notfound');
 
 /**
- * Static stuff
+ * Static data
  */
 app.use(express.static('public'));
 
 /**
- * Standard error handler
+ * Dog routing
  */
-app.use(function (err, req, res, next) {
-  res.status(500).send('Houston, we have a problem!');
+app.use('/dog', require('./routes/dog'));
 
-  //Flush out the stack to the console
-  console.error(err.stack);
-});
+/**
+ * Dog routing
+ */
+app.use('/pound', require('./routes/pound'));
 
-var server = app.listen(3000, function () {
-  console.log('Hello :3000');
+app.use(notfound);
+
+app.listen(3000, function () {
+  console.log('Hello :3000');  // eslint-disable-line no-console
 });
