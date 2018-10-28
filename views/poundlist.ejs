@@ -1,0 +1,32 @@
+<%- include('header', { nav : nav }) %>
+<div class="container">
+    <h1 class="display-4">
+        Menhelyek
+    </h1>
+    <table class="table">
+        <thead>
+            <tr class="d-flex">
+                <th scope="col" class="col">Telephely</th>
+                <th scope="col" class="col">Kutya szám</th>
+                <th scope="col" class="col">Telephely sorszáma</th>
+                <th scope="col" class="col"></th>
+            </tr>
+        </thead>
+        <tbody>
+            <% for(pound of pounds) { %>
+            <tr class="d-flex">
+                <td class="col"><%= pound.location %></td>
+                <td class="col"><%= pound.dogCount %></td>
+                <td class="col"><%= pound.id %></td>
+                <td class="col">
+                    <div class="btn-group float-right abtn">
+                        <a class="btn btn-secondary mx-1 " href="/pound/details/<%= pound.id %>">Details</a>
+                    </div>
+                </td>
+            </tr>
+            <% } %>
+        </tbody>
+    </table>
+    <a class="btn btn-primary" href="/pound/new">Új hozzáadása</a>
+</div>
+<%- include('footer') %>

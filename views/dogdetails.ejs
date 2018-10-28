@@ -1,0 +1,17 @@
+<%- include('header', { nav : nav }) %>
+<div class="container">
+    <h1 class="display-4">
+        <%= title %>
+    </h1>
+    <div class="card mt-2" style="width: 18rem;">
+      <div class="card-body">
+          <h5 class="card-title"><%= dog.name %></h5>
+          <p class="card-text">Fajta: <%= dog.species %></p>
+          <p class="card-text">Szín: <%= dog.color %></p>
+          <p class="card-text">Kor: <%= dog.age %></p>
+          <p class="card-text">Menhely: <%= dog.pound %></p>
+          <a href="/dog/edit/<%= dog.id %>" class="btn btn-primary">Szerkesztés</a>
+      </div>
+  </div>
+</div>
+<%- include('footer') %>

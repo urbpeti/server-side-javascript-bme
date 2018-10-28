@@ -1,0 +1,40 @@
+<%- include('header', { nav : nav }) %>
+<div class="container">
+    <h1 class="display-4">
+        <%= title %>
+    </h1>
+    <table class="table">
+        <thead>
+            <tr class="d-flex">
+                <th scope="col" class="col">#</th>
+                <th scope="col" class="col">Név</th>
+                <th scope="col" class="col">Fajta</th>
+                <th scope="col" class="col">Kor</th>
+                <th scope="col" class="col">Szín</th>
+                <th scope="col" class="col-2">Menhely</th>
+                <th scope="col" class="col"></th>
+            </tr>
+        </thead>
+        <tbody>
+            <% for(dog of dogs) { %>
+            <tr class="d-flex">
+                <td scope="row" class="col"><%= dog.id %></td>
+                <td class="col"><%= dog.name %></td>
+                <td class="col"><%= dog.species %></td>
+                <td class="col"><%= dog.age %></td>
+                <td class="col"><%= dog.color %></td>
+                <td class="col-2"><%= dog.pound %></td>
+                <td class="col">
+                    <div class="btn-group float-right abtn">
+                        <a class="btn btn-secondary mx-1 " href="/dog/details/<%= dog.id %>">Details</a>
+                        <a class="btn btn-secondary mx-1 " href="/dog/edit/<%= dog.id %>">Edit</a>
+                        <a class="btn btn-secondary ">X</a>
+                    </div>
+                </td>
+            </tr>
+            <% } %>
+        </tbody>
+    </table>
+    <a class="btn btn-primary" href="/dog/new">Új hozzáadása</a>
+</div>
+<%- include('footer') %>

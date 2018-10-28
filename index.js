@@ -8,6 +8,11 @@ const notfound = require('./middleware/errorhandling/notfound');
 app.use(express.static('public'));
 
 /**
+ * set the view engine to ejs
+ */
+app.set('view engine', 'ejs');
+
+/**
  * Dog routing
  */
 app.use('/dog', require('./routes/dog'));

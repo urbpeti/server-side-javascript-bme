@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 
+const dogNavbar = require('../middleware/dog/dogNavbar');
 const listDogs = require('../middleware/dog/listDogs');
 const getDog = require('../middleware/dog/getDog');
 const updatedDog = require('../middleware/dog/updateDog');
@@ -10,28 +11,38 @@ const deleteDog = require('../middleware/dog/deleteDog');
 const renderMW = require('../middleware/generic/render');
 
 router.get('/list',
+  dogNavbar,
   listDogs,
-  renderMW('dogs')
+  renderMW('doglist')
 );
 
-router.get('/:dog',
+router.get('/details/:dogId',
+  dogNavbar,
   getDog,
-  renderMW('dogs')
+  renderMW('dogdetails')
+);
+
+router.get('/edit/:dogId',
+  dogNavbar,
+  getDog,
+  renderMW('dogedit')
+);
+
+router.post('/edit/:dogId',
+  updatedDog
+);
+
+router.get('/new',
+  dogNavbar,
+  renderMW('dognew')
 );
 
 router.post('/new',
-  insertDog,
-  renderMW('dogs')
+  insertDog
 );
 
-router.delete('/:dog',
-  deleteDog,
-  renderMW('dogs')
-);
-
-router.put('/:dog',
-  updatedDog,
-  renderMW('dogs')
+router.post('/delete/:dog',
+  deleteDog
 );
 
 module.exports = router;
