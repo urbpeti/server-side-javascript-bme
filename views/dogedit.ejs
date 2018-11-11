@@ -23,11 +23,17 @@
         <div class="form-group">
             <label for="menhely">Menhely</label>
             <select class="form-control" name="pound_id">
-                <% for(pound of pounds) { %>
+            <% for(pound of pounds) { %>
+                <% if(pound.id == dog.pound.id) { %>
+                <option value=<%=pound.id %> selected>
+                    <%= pound.location %>
+                </option>
+                <% } else { %>
                 <option value=<%=pound.id %>>
                     <%= pound.location %>
                 </option>
                 <% } %>
+            <% } %>
             </select>
         </div>
 

@@ -24,9 +24,9 @@
                 <td class="col-2"><%= dog.pound %></td>
                 <td class="col">
                     <div class="btn-group float-right abtn">
-                        <a class="btn btn-secondary mx-1 " href="/dog/details/<%= dog.id %>">Details</a>
-                        <a class="btn btn-secondary mx-1 " href="/dog/edit/<%= dog.id %>">Edit</a>
-                        <a class="btn btn-secondary ">X</a>
+                        <a class="btn btn-secondary mx-1" href="/dog/details/<%= dog.id %>">Details</a>
+                        <a class="btn btn-secondary mx-1" href="/dog/edit/<%= dog.id %>">Edit</a>
+                        <a class="btn btn-secondary delete-button" data-url="/dog/delete/<%= dog.id %>">X</a>
                     </div>
                 </td>
             </tr>
@@ -34,5 +34,14 @@
         </tbody>
     </table>
     <a class="btn btn-primary" href="/dog/new">Új hozzáadása</a>
+    <script>
+        $(() =>{
+            $('.delete-button').click(function(e){
+                $.post(e.target.getAttribute('data-url'), function(){
+                    location.reload();
+                });
+            });
+        });
+    </script>
 </div>
 <%- include('footer') %>

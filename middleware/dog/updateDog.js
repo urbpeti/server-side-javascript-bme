@@ -4,7 +4,6 @@
 const { updateDog } = require('../../database/dog');
 module.exports = async function (req, res, next) {
   const dogId = req.params.dogId;
-  //TODO insert implementation
   await updateDog(dogId, {
     name: req.body.name,
     species: req.body.species,

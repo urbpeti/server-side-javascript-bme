@@ -44,7 +44,7 @@ router.post('/new',
   insertDog
 );
 
-router.post('/delete/:dog',
+router.post('/delete/:dogId',
   deleteDog
 );
 

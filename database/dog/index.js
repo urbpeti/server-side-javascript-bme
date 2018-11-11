@@ -48,7 +48,10 @@ async function getDogById(id) {
       species: dog.species,
       color: dog.color,
       age: dog.age,
-      pound: dog.pound_id.location
+      pound: {
+        location: dog.pound_id.location,
+        id: dog.pound_id.id
+      }
     }));
 }
 
@@ -77,9 +80,22 @@ async function updateDog(id, input) {
   await pound.save();
 }
 
+async function deleteDog(id) {
+  const pound = await PoundModel.findOne({
+    dogs: {
+      $in: [id]
+    }
+  }).exec();
+  pound.dogs.splice(pound.dogs.indexOf(id), 1);
+  await pound.save();
+  await DogModel.deleteOne({ _id: id });
+}
+
+
 module.exports = {
   insertDog,
   getDogsWithPoundLocation,
   getDogById,
-  updateDog
+  updateDog,
+  deleteDog
 };
