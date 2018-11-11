@@ -18,7 +18,7 @@ async function insertDog(input) {
   try {
     await dog.save();
     pound.dogs.push(dog);
-    error = await pound.save();
+    await pound.save();
   } catch (e) {
     return console.error('New dog error: ' + e);
   }
@@ -39,7 +39,7 @@ async function getDogsWithPoundLocation() {
 }
 
 async function getDogById(id) {
-  return DogModel.findOne({ _id: id})
+  return DogModel.findOne({ _id: id })
     .populate('pound_id')
     .exec()
     .then(dog => ({
@@ -52,8 +52,34 @@ async function getDogById(id) {
     }));
 }
 
+async function updateDog(id, input) {
+  const oldPound = await PoundModel.findOne({
+    dogs: {
+      $in: [id]
+    }
+  });
+
+  oldPound.dogs.splice(oldPound.dogs.indexOf(id), 1);
+  await oldPound.save();
+  const pound = await PoundModel.findOne({ id: input.pound_id }).exec();
+  const dog = await DogModel.findOneAndUpdate(
+    { _id: id },
+    {
+      name: input.name,
+      species: input.species,
+      age: input.age,
+      color: input.color,
+      pound_id: pound._id
+    }
+  );
+
+  pound.dogs.push(dog);
+  await pound.save();
+}
+
 module.exports = {
   insertDog,
   getDogsWithPoundLocation,
-  getDogById
+  getDogById,
+  updateDog
 };

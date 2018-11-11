@@ -26,6 +26,7 @@ router.get('/details/:dogId',
 router.get('/edit/:dogId',
   dogNavbar,
   getDog,
+  listPounds,
   renderMW('dogedit')
 );
 
