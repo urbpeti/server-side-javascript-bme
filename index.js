@@ -1,6 +1,7 @@
 const express = require('express');
 const app = express();
 const notfound = require('./middleware/errorhandling/notfound');
+const bodyParser = require('body-parser');
 
 /**
  * Static data
@@ -11,6 +12,9 @@ app.use(express.static('public'));
  * set the view engine to ejs
  */
 app.set('view engine', 'ejs');
+
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 
 /**
  * Dog routing

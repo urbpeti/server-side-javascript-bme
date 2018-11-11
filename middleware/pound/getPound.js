@@ -1,13 +1,13 @@
 /**
  * Gets the pound for the pound id with dogs
  */
-const { getPounds, getDogsByPoundId } = require('../../model/mockdb');
+const { getPounds, getDogsByPoundId } = require('../../database/pound');
 
-module.exports = function (req, res, next) {
+module.exports = async function (req, res, next) {
 
-  res.tpl = { 
-    pounds: getPounds(),
-    dogs: getDogsByPoundId(parseInt(req.params.poundId)),
+  res.tpl = {
+    pounds: await getPounds(),
+    dogs: await getDogsByPoundId(parseInt(req.params.poundId)),
     selectedPoundId: req.params.poundId,
     ...res.tpl
   };

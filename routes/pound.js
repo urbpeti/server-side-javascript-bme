@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 
-const listPounds = require('../middleware/pound/listPounds');
+const listPoundsWithDogsCount = require('../middleware/pound/listPoundsWithDogCount');
 const getPound = require('../middleware/pound/getPound');
 const insertPound = require('../middleware/pound/insertPound');
 const poundNavbar = require('../middleware/pound/poundNavbar');
@@ -11,7 +11,7 @@ const renderMW = require('../middleware/generic/render');
 
 router.get('/list',
   poundNavbar,
-  listPounds,
+  listPoundsWithDogsCount,
   renderMW('poundlist')
 );
 

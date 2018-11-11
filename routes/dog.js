@@ -7,6 +7,7 @@ const getDog = require('../middleware/dog/getDog');
 const updatedDog = require('../middleware/dog/updateDog');
 const insertDog = require('../middleware/dog/insertDog');
 const deleteDog = require('../middleware/dog/deleteDog');
+const listPounds = require('../middleware/pound/listPounds');
 
 const renderMW = require('../middleware/generic/render');
 
@@ -34,6 +35,7 @@ router.post('/edit/:dogId',
 
 router.get('/new',
   dogNavbar,
+  listPounds,
   renderMW('dognew')
 );
 

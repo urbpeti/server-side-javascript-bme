@@ -1,12 +1,12 @@
 /**
  * List dogs
  */
-const db = require('../../model/mockdb');
+const { getDogsWithPoundLocation } = require('../../database/dog');
 
-module.exports = function (req, res, next) {
+module.exports = async function (req, res, next) {
   res.tpl = {
     title: 'Kutyák',
-    dogs: db.getDogsWithPoundLocation(),
+    dogs: await getDogsWithPoundLocation(),
     ...res.tpl
   };
   return next();
