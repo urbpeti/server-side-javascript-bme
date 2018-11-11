@@ -3,12 +3,12 @@
  *  - if there is no such dog, redirect to /dogs
  *  - if there is one, put it on res.
  */
-const { getDogById } = require('../../model/mockdb');
+const { getDogById } = require('../../database/dog');
 
-module.exports = function (req, res, next) {
+module.exports = async function (req, res, next) {
   res.tpl = {
     title: 'Kutya részletes adatai',
-    dog: getDogById(parseInt(req.params.dogId)),
+    dog: await getDogById(req.params.dogId),
     ...res.tpl
   };
   return next();

@@ -38,7 +38,22 @@ async function getDogsWithPoundLocation() {
     })));
 }
 
+async function getDogById(id) {
+  return DogModel.findOne({ _id: id})
+    .populate('pound_id')
+    .exec()
+    .then(dog => ({
+      id: dog._id,
+      name: dog.name,
+      species: dog.species,
+      color: dog.color,
+      age: dog.age,
+      pound: dog.pound_id.location
+    }));
+}
+
 module.exports = {
   insertDog,
-  getDogsWithPoundLocation
+  getDogsWithPoundLocation,
+  getDogById
 };
